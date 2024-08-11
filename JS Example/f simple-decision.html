@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function VerifyUser(){
+            var username = document.getElementById("txtName").value;
+            var lblError = document.getElementById("lblError");
+            fetch("../data/users.json")
+            .then(function(res){
+                return res.json();
+            })
+            .then(function(users){
+                for(var user of users){
+                    if(user.UserName===username){
+                        lblError.innerHTML = "User Name Taken- Try Another".fontcolor('red');
+                        break;
+                    }else {
+                        lblError.innerHTML = "UserName Available".fontcolor('green');
+                    }
+                }
+            })
+        }
+            
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>Register User</legend>
+        <dl>
+            <dt>User Name</dt>
+            <dd><input type="text" id="txtName" onkeyup="VerifyUser()"></dd>
+            <dd id="lblError"></dd>
+        </dl>
+    </fieldset>
+</body>
+</html>

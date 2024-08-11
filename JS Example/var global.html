@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>global scope</title>
+    
+</head>
+<body>
+   <script>
+    "use strict";
+      const x=50;
+      function f1()
+      {
+        document.write("x in function-1:"+ x + "<br>");
+      }
+      function f2()
+      {
+        document.write("x in function-2:"+x);
+      }
+      f1();
+      f2();
+    </script>
+</body>
+</html>

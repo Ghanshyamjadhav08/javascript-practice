@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function bodyload(){
+            var ol = document.createElement("ol");
+            var item1 = document.createElement("li");
+            var item2 = document.createElement("li");
+            var item3 = document.createElement("li");
+            item1.innerHTML = "HTML";
+            item2.innerHTML = "CSS";
+            item3.innerHTML = "Javascript";
+            ol.appendChild(item1);
+            ol.appendChild(item2);
+            ol.appendChild(item3);
+            document.querySelector("div").appendChild(ol);
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <div>
+          
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul, ol{
+            list-style: none;
+        }
+    </style>
+    <script type="text/javascript">
+        var courses = ["Chemistry", "Physics", "English", "Biology"];
+        function bodyload() {
+            var tbody = document.querySelector("tbody");
+            courses.map(function (course) {
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+
+                td.innerHTML = course;
+                tr.appendChild(td);
+                tbody.appendChild(tr)
+            });
+            document.querySelector("table").appendChild(tbody)
+            // links 
+            var ol = document.createElement("ol");
+            courses.map(function(value){
+                var li = document.createElement("li");
+                li.innerHTML = value;
+                ol.appendChild(li);
+            })
+            document.querySelector("a").appendChild(ol);
+            // checkbox
+            var ul = document.createElement("ul");
+            courses.map(function(value){
+                var li = document.createElement("li");
+                var input = document.createElement("input");
+                input.type = "checkbox";
+                var label = document.createElement("label");
+                label.innerHTML = value;
+                li.appendChild(input);
+                li.appendChild(label);
+                document.querySelector("ul").appendChild(li);
+            })
+        }
+      
+      
+    </script>
+</head>
+<body onload="bodyload()">
+    <table border="1" width="200">
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+    <h4>hyperlink with ordered list---></h4>
+   
+    <div>
+        <ol>
+            <a href=""></a>
+        </ol>
+       <ul>
+
+       </ul>
+
+    </div>
+</body>
+</html>

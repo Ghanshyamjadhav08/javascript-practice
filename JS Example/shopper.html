@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopper Template</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+   <script src="../script/shopper.js"></script>
+    <style>
+        a {
+            color:white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="container-fluid" onload="bodyload()">
+    <header class="d-flex justify-content-between bg-dark text-white p-2">
+        <div><span class="h4">Shopper</span></div>
+        <div>
+            <span class="me-2"><a href="javascript:NavClick()">Home</a></span>
+            <span class="me-2"><a href="javascript:NavClick()">Electronics</a</span>
+            <span class="me-2"><a href="javascript:NavClick()">Men's Clothing</a</span>
+            <span class="me-2"><a href="javascript:NavClick()">Women's Clothing</a</span>
+            <span class="me-2"><a href="javascript:NavClick()">Jewelery</a</span>
+        </div>
+        <div>
+            <span class="bi bi-search me-2"></span>
+            <span class="bi bi-heart me-2"></span>
+            <span class="bi bi-person me-2"></span>
+            <button onclick="ShowCart()" class="btn btn-light position-relative" data-bs-target="#cart" data-bs-toggle="modal">
+                Your Cart<span class="bi bi-cart4"></span>
+                <span class="badge bg-danger position-absolute end-0 top-0 text-white rounded rounded-circle" id="lblCount"></span>
+            </button>
+            <div class="modal fade" id="cart">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header text-primary">
+                            <h2>Your Cart Summary</h2>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Preview</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="mt-3 row">
+        <nav class="col-2">
+           <label class="form-label fw-bold">Select Category</label>
+           <div>
+             <select onchange="CategoryChanged()" class="form-select" id="lstCategories"></select>
+           </div>
+        </nav>
+        <main class="col-10 d-flex flex-wrap overflow-auto" style="height: 550px;">
+
+        </main>
+    </section>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

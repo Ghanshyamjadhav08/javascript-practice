@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Table Row</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <table id="coursesTable">
+    <thead>
+      <tr>
+        <th>Course Name</th>
+        <th>Duration</th>
+        <th>Level</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- Existing rows, if any -->
+    </tbody>
+  </table>
+
+  <script>
+    // Function to create a table row
+    function createTableRow(courseName, duration, level) {
+      const newRow = document.createElement('tr');
+
+      const nameCell = document.createElement('td');
+      nameCell.textContent = courseName;
+      newRow.appendChild(nameCell);
+
+      const durationCell = document.createElement('td');
+      durationCell.textContent = duration;
+      newRow.appendChild(durationCell);
+
+      const levelCell = document.createElement('td');
+      levelCell.textContent = level;
+      newRow.appendChild(levelCell);
+
+      return newRow;
+    }
+
+    // Add new rows to the table dynamically
+    const tableBody = document.getElementById('tableBody');
+
+    const course1 = createTableRow('HTML', '4 weeks', 'Beginner');
+    const course2 = createTableRow('CSS', '6 weeks', 'Intermediate');
+    const course3 = createTableRow('JavaScript', '8 weeks', 'Advanced');
+
+    tableBody.appendChild(course1);
+    tableBody.appendChild(course2);
+    tableBody.appendChild(course3);
+  </script>
+</body>
+</html>

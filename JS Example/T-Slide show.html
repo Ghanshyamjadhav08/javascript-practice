@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slide-show</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript">
+        var count = 0;
+        var countdown = 5; // Countdown in seconds
+        var countdownTask;
+       
+        function LoadProduct(){
+            count++;
+            fetch(`http://fakestoreapi.com/products/${count}`)
+            .then(function(res){
+                return res.json();
+            })
+            .then(function(product){
+                document.getElementById("lblTitle").innerHTML = product.title;
+                document.getElementById("imgProduct").src = product.image;
+                startCountdown();
+            });
+        }
+        
+        function bodyload(){
+            LoadProduct();
+         
+        }
+        var task;
+        function PlayClick(){
+            clearInterval(task); // Clear any existing task
+            LoadProduct(); // Load the first product
+            task = setInterval(LoadProduct, 5000); // Start the slideshow with 5-second interval
+            document.getElementById("lblStatus").innerHTML = "Slide Show-Started";
+             
+        }
+        function PauseClick(){
+            clearInterval(task);
+            clearInterval(countdownTask);
+            document.getElementById("lblStatus").innerHTML = "Slide Show-Paused";
+        }
+        var id=1;
+        function LoadProductById(id){
+            fetch(`http://fakestoreapi.com/products/${id}`)
+            .then(function(res){
+                return res.json();
+            })
+            .then(function(product){
+                document.getElementById("lblTitle").innerHTML = product.title;
+                document.getElementById("imgProduct").src = product.image;
+            });
+        }
+        function PreviousClick(){
+            id--;
+            LoadProductById(id);
+        }
+        function NextClick(){
+            id++;
+            LoadProductById(id);
+        }
+        function startCountdown() {
+            clearInterval(countdownTask); // Clear any existing countdown task
+            countdown = 5; // Reset countdown to 5 seconds
+            updateCountdown(); // Update the countdown immediately
+            countdownTask = setInterval(updateCountdown, 1000); // Update countdown every second
+        }
+       
+        function updateCountdown() {
+            document.getElementById("lblCountdown").innerHTML = countdown;
+            countdown--;
+            if (countdown < 0) {
+                clearInterval(countdownTask);
+                document.getElementById("lblCountdown").innerHTML = "";
+            }
+        }
+    </script>
+   
+</head>
+<body onload="bodyload()" class="container-fluid d-flex justify-content-center" >
+    <div class="card p-2 mt-4 w-50">
+        <!---card-header-->
+        <div class="card-header text-center">
+            <p id="lblTitle"></p>
+            <p id="lblStatus"></p>
+           <div class="d-flex justify-content-center"> <p id="lblCountdown"></p>
+            <i class="bi bi-watch" style="color: green;"></i></div>
+        </div>
+        <!--card-body-->
+        <div class="card-body">
+            <div class="row">
+                <div class="col-1">
+                    <button class="btn" onclick="PreviousClick()"><span class="bi bi-chevron-left"></span></button>
+                </div>
+                <div class="col-10">
+                    <img id="imgProduct" width="100%" height="400" alt="">
+                </div>
+                <div class="col-1">
+                    <button onclick="NextClick()" class="btn" ><span class="bi bi-chevron-right"></span></button>
+                </div>
+            </div>
+        </div>
+        <!--card-footer-->
+        <div class="card-footer text-center" >
+            <button onclick="PlayClick()" class="btn btn-success bi bi-play-btn-fill" ></button>
+            <button onclick="PauseClick()" class="btn btn-danger bi bi-pause-fill" ></button>
+        </div>
+    </div>
+</body>
+</html>

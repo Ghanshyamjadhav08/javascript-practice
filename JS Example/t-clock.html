@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.section {
+    text-align: center;
+   
+}
+
+.clock {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.greeting {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+    </style>
+     <script type="text/javascript">
+        function updateClock() {
+    var now = new Date();
+    var clockElement = document.getElementById("clock");
+    clockElement.innerHTML = now.toLocaleTimeString();
+
+    var hour = now.getHours();
+    var greetingElement = document.getElementById("greeting");
+    let greeting = " ";
+    if (hour >= 0 && hour < 12) {
+        greeting = ` Good morning <i class="bi bi-sunrise"></i> <br> ${name}`;
+    } else if (hour >= 12 && hour < 17) {
+        greeting = `  Good afternoon <i class="bi bi-brightness-high-fill"></i><br> ${name} `;
+    } else {
+        greeting = ` Good evening <i class="bi bi-moon"></i> <br> ${name}`;
+    }
+    greetingElement.innerHTML = greeting ;
+}
+var name;
+function bodyload() {
+    setInterval(updateClock, 1000);
+    name=prompt("Enter your name");
+}
+    </script>
+</head>
+<body onload="bodyload()">
+    <div class="section">
+        <div class="clock" id="clock"></div>
+        <p class="greeting" id="greeting"></p>
+    </div>
+   
+</body>
+</html>

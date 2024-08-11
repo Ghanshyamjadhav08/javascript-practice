@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+          .time {
+            align-items: center;
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            font-size: 75px;
+        }
+        .greeting {
+            margin-bottom: 100px;
+            font-size: 100px;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        function Timer(){
+            var now = new Date();
+            var hrs = now.getHours();
+            document.querySelector("p").innerHTML = now.toLocaleTimeString();
+            if (hour >= 0 && hour <12){
+                document.getElementById("greet").innerHTML = (` Good Morning <i class="bi bi-sun"></i> <br> ${Name}`);
+            } else if (hour >= 12 && hour <17 ){
+                document.getElementById("greet").innerHTML = (`Good Afternoon <i class="bi bi-brightness-high-fill"></i> <br>${Name}`);
+            }else {
+                document.getElementById("greet").innerHTML = (`Good Evening  <i class="bi bi-moon"></i> <br> ${Name} `);
+            }
+            greetingElement.innerHTML ="greet";
+           
+        }
+        var clock;
+            function bodyload(){
+                clock = setInterval(Timer, 1000);
+            }
+            function StopClick(){
+                clearInterval(clock);
+            }
+            function StartClick(){
+                bodyload();
+            }
+    </script>
+</head>
+<body onload="bodyload()">
+    <p class="time"></p>
+    <p id="greet" class="greeting"></p>
+    <div align="center">
+        <button onclick="StopClick()" class="btn btn-danger">Stop</button>
+        <button onclick="StartClick()" class="btn btn-success">Start</button>
+      </div>
+    
+</body>
+</html>

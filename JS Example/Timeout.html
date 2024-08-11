@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Timeout</title>
+    <script type="text/javascript">
+        function f1(){                              
+        document.querySelector("p").innerHTML = "1";
+    }
+    function f2(){
+        document.querySelector("p").innerHTML = "2";
+    }
+    function f3(){
+        document.querySelector("p").innerHTML = "3";
+    }
+    var fun1, fun2, fun3;
+    function bodyload(){
+        fun1 = setTimeout(f1,2000);
+        fun2 = setTimeout(f2,5000);
+        fun3 = setTimeout(f3,10000);
+    }
+    function CancelClick(){
+        clearTimeout(fun2);
+    }
+    </script>
+</head>
+<body onload="bodyload()">
+     <button onclick="CancelClick()">Cancel 2nd</button>
+     <p align="center"></p>
+</body>
+</html>

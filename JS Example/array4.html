@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var values = [1, "TV", 5000.00,true,["Delhi","Hyd"],function(){document.write("Hello World")}];
+        var [id, name, price, stock, cities, hello] = values;
+        document.write(`
+        id=${id}<br>
+        name=${name}<br>
+        price=${price}<br>
+        stock=${stock}<br>
+        Cities=${cities}<br>
+        
+        `);
+        hello();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

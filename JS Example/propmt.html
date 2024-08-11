@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function bodyload(){
+            str=prompt("Your Name","eg:Name max 10 chars");
+            if(str==null){
+                alert("input Canceled");
+
+            }
+            else if(str==""){
+                alert("please provide a name");
+            }
+            else{
+                document.querySelector("p").innerHTML="Hello !"+str;
+            }
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <p></p>
+</body>
+</html>

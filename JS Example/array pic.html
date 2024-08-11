@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+          function bodyload(){
+            var home = document.createElement("button");
+            home.innerHTML = "Home";
+            document.querySelector("nav").appendChild(home);
+
+            var contact = document.createElement("button");
+            contact.innerHTML = "Contact";
+            document.querySelector("nav").appendChild(contact);
+
+             var pic = document.createElement("img");
+             pic.src = "../../public/images/fashion1.jpg";
+             pic.width ="200";
+             pic.height = "300";
+             
+             var caption = document.createElement("figcaption");
+             caption.innerHTML ="men's Fashion";
+             document.querySelector("figure").appendChild(pic);
+             document.querySelector("figure").appendChild(caption);
+          }
+    </script>
+</head>
+<body onload="bodyload()">
+    <h3>Shopper</h3>
+    <nav></nav>
+    <figure>
+       
+    </figure>
+</body>
+</html>

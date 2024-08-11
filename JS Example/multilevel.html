@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilevel</title>
+    <script type="text/javascript">
+         var userDetails = {
+            "Card": "4445556667788",
+            "Cvv": "4518",
+            "Expiry": "2024"
+        }
+        function PayClick(){
+            var card = document.getElementById("txtCard").value;
+            var cvv  = document.getElementById("txtCvv").value;
+            var expiry = document.getElementById("lstExpiry").value;
+            var msg = document.getElementById("msg");
+           if(card===userDetails.Card)
+           {
+            if (cvv===userDetails.Cvv){
+                if(expiry===userDetails.Expiry){
+                    document.write("Payment Success..");
+                } else {
+                    msg.innerHTML ="Invalid Expiry";
+                }
+            } else {
+                msg.innerHTML = "Invalid Cvv";
+            }
+           }
+           else{
+            msg.innerHTML = "Invalid Card Details";
+           }
+
+        }
+     
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>Payment Details</legend>
+        <dl>
+            <dt>Card Number</dt>
+            <dd><input type="text" id="txtCard"></dd>
+            <div id="cvvContainer">
+                <dt>Cvv</dt>
+                <dd><input type="text" id="txtCvv" size="4" ></dd>
+            </div>
+            <div id="expiryContainer" >
+                <dt>Expiry</dt>
+                <dd>
+                    <select id="lstExpiry">
+                        <option>Select Expiry</option>
+                        <option>2023</option>
+                        <option>2024</option>
+                        <option>2025</option>
+                    </select>
+                </dd>
+            </div>
+        </dl>
+        <button id="btnPay" onclick="PayClick()">Pay</button>
+        <p align="center" id="msg" style="color:red;"></p>
+    </fieldset>
+</body>
+</html>

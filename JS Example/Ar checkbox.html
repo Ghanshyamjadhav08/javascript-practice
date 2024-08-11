@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var items = ["Math","Physics","Chemistry","Biology"];
+        function bodyload(){
+            items.map(function(items){
+                var li = document.createElement("li");
+                li.innerHTML=`<input type= "checkbox"<label>${items}</label>`;
+                document.querySelector("ul").appendChild(li);
+                //anchors
+                var olLi = document.createElement("li");
+                olLi.innerHTML =`<a href="#">${items}<a>`;
+                    document.querySelector("ol").appendChild(olLi) 
+            }) 
+           
+        }
+       
+       
+    </script>
+    <style>
+        ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body onload="bodyload()">
+    <ul>
+
+    </ul>
+    <ol>
+
+    </ol>
+    <table border="1" width="400">
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                 
+                 
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+</html>

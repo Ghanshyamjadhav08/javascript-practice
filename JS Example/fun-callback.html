@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+     function FetchData(url,Success,failure){
+        if(url==="http://fakestoreapi.com"){
+            success();
+        } else {
+            failure();
+        }
+     }
+       FetchData(prompt("Enter Url"),()=>{
+        document.write("Data Fetched Successfully.")
+       },()=>{
+        document.write("Invalid Url:Unable to Fetch Data");
+       })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

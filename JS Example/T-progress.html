@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        @keyframes ZoomIn{
+            from {
+                width: 10px;
+                height: 10px;
+            }
+            to{
+                width: 300px;
+                height: 400px;
+            }
+            progress{
+                width: 200px;
+                height: 30px;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+         var count = 0;
+        function LoadingStatus(){
+            var img = document.querySelector("img");
+            count++;
+            document.querySelector("progress").value = count;
+            document.getElementById("lblStatus").innerHTML = `${count} % <br> Loading..`;
+            if(count==100){
+                document.getElementById("loadingContainer").style.display = "none";
+                document.getElementById("imageContainer").style.display = "block";
+                img.style.animationName = "ZoomIn";
+                img.style.animationDuration = "5s";
+            }
+        }
+       
+        function LoadClick(){
+           task =  setInterval(LoadingStatus,100);
+            document.getElementById("buttonContainer").style.display = "none";
+            document.getElementById("loadingContainer").style.display = "block";
+           
+        }
+        var task;
+        function PlayClick(){
+            task = setInterval(LoadingStatus,100);
+        }
+        function PauseClick(){
+            clearInterval(task);
+            document.getElementById("lblStatus").innerHTML = `${count} % <br> Paused..`;
+        }
+    </script>
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center" style="height:100vh">
+    <div>
+        <div id="buttonContainer">
+            <button class="btn btn-success" onclick="LoadClick()">Load Image</button>
+        </div>
+        <div id="loadingContainer" class="text-center" style="display: none;">
+            <progress min="1" max="100" value="1"></progress>
+            <div>
+                <button class="btn btn-success" onclick="PlayClick()"><span  class="bi bi-play"></span></button>
+                <button class="btn btn-danger" onclick="PauseClick()"><span  class="bi bi-pause"></span></button>
+            </div>
+            <div id="lblStatus"></div>
+        </div>
+        <div id="imageContainer" style="display: none;">
+            <img src="../../public/images/fashion9.jpg">
+        </div>
+    </div>
+</body>
+</html>

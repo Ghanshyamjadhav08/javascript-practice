@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string pic boolean type</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script type="text/javascript">
+        function Toggle(){
+            var button = document.querySelector("button");
+            var pic = document.getElementById("pic");
+            button.className = (button.className=="bi bi-eye-fill")?"bi bi-eye-slash":"bi bi-eye-fill";
+            pic.style.display=(pic.style.display=="none")?"block":"none";
+            button.innerHTML =(button.innerHTML=="Hide")?"show":"Hide";
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="Toggle()" class="bi bi-eye-fill">Show</button>
+    <div>
+        <img style="display:none" src="../../public/images/fashion5.jpg" width="200" height="200" alt="" id="pic">
+    </div>
+</body>
+</html>

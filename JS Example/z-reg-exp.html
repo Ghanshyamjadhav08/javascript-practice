@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var CountryList = ["Select Country", "INDIA","US","UK"];
+        function LoadCountry(){
+            CountryList.map(function(country){
+                var option = document.createElement("option");
+                option.text = country;
+                option.value = country;
+                document.getElementById("CountryName").appendChild(option);
+            })
+        }
+        var country;
+        function ChangeCountry(){
+        var country= document.getElementById("CountryName").value;
+        var mobileNumber = document.getElementById("txtMobile");
+
+            if (country ==="INDIA"){
+                document.getElementById("CountryFlag").src = "../../public/images/flag.png";
+                mobileNumber.placeholder = "+91 10 digit No.";
+            }else if(country === "US"){
+                document.getElementById("CountryFlag").src = "../../public/images/us.png";
+                mobileNumber.placeholder = "(+1)(***)****-****";
+            }else if(country =="UK"){
+                document.getElementById("CountryFlag").src = "../../public/images/uk.png";
+                mobileNumber.placeholder = "(+44) 11 digit No.";
+            }
+        }
+        function bodyLoad(){
+            LoadCountry()
+        }
+        function VerifyType() {
+        var country = document.getElementById("CountryName").value;
+        var mobileNumber = document.getElementById("txtMobile").value;
+
+        if (country === "INDIA") {
+            var indReg = /^\+91\d{10}$/;
+            if (!indReg.test(mobileNumber)) {
+                document.getElementById("msg").textContent = "Invalid format for India";
+            } else {
+                document.getElementById("msg").textContent = "Sucess";
+            }
+        } else if (country === "US") {
+            var usReg = /^\(\+1\)\(\d{3}\)\d{4}-\d{4}$/;
+            if (!usReg.test(mobileNumber)) {
+                document.getElementById("msg").textContent = "Invalid format for US";
+            } else {
+                document.getElementById("msg").textContent = "Sucess";
+            }
+        } else if (country === "UK") {
+            var ukReg = /^\(\+44\)\d{11}$/;
+            if (!ukReg.test(mobileNumber)) {
+                document.getElementById("msg").textContent = "Invalid format for UK";
+            } else {
+                document.getElementById("msg").textContent = "Sucess";
+            }
+        }
+    }
+    </script>
+</head>
+
+<body onload="bodyLoad()">
+    <h2 class="mt-3 mb-2 text-center font-monospace ">Country Phone Number Verification</h2>
+
+    <section class="container-fluid d-flex justify-content-center mb-3">
+    <div class="border border-3 border-black rounded-3 w-25 p-4 m-5 bg-primary-subtle"  >
+        <div>
+            <label class="form-label">Select Country</label>
+            <div class="d-flex">
+                <select onchange="ChangeCountry()" name="CountryName" id="CountryName" class="form-select w-75 d-inline  mb-2"></select>
+                <div class="border border-secondary w-25  input-group-text mb-2 m-1" ><img id="CountryFlag" height="25" width="25"></div>
+            </div>
+            <div>
+                <label for="mobile" class="form-label">Mobile No</label>
+                <input onblur="VerifyType()" type="text" name="mobile" id="txtMobile" class="form-control  mb-4">
+                <div id="msg" class="mb-2"></div>
+                <button type="button" class="btn btn-outline-success form-control">Submit</button>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
